@@ -66,7 +66,7 @@ int main(int argc, char **argv ) {
 
   int blockSize = 32;
   dim3 dimBlock(blockSize, blockSize, 1);
-  dim3 dimGrid(ceil(width / float(blockSize)),ceil(height / float(blockSize)), 1);
+  dim3 dimGrid(ceil(width / float(blockSize)), ceil(height / float(blockSize)), 1);
   img2gray<<<dimGrid, dimBlock>>>(d_dataRawImage, width, height, d_imageOutput);
   cudaDeviceSynchronize();
   cudaMemcpy(h_imageOutput, d_imageOutput, sizeGray, cudaMemcpyDeviceToHost);
